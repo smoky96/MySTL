@@ -22,7 +22,7 @@ using std::endl;
 namespace test_vector {
 
 struct non_trivial_class {
-  int i;
+  int    i;
   double j;
   non_trivial_class(int _i = 0) : i(_i), j(1){};
 };
@@ -88,7 +88,7 @@ int test() {
   printf("cpacity: %d\n\n", my_vec.capacity());
 
   printf("range initialize my_vec1...\n");
-  auto il = {0, 2, 4, 6, 8, 10};
+  auto                          il = {0, 2, 4, 6, 8, 10};
   gd::vector<non_trivial_class> my_vec1(il.begin(), il.end());
   for (int i = 0; i < 6; ++i) {
     assert(2 * i == my_vec1[i].i);

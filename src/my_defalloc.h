@@ -42,12 +42,12 @@ inline void _destroy(T* p) {
 template <typename T>
 class allocator {
  public:
-  typedef T value_type;
-  typedef T* pointer;
-  typedef const T* const_pointer;
-  typedef T& reference;
-  typedef const T& const_reference;
-  typedef size_t size_type;
+  typedef T         value_type;
+  typedef T*        pointer;
+  typedef const T*  const_pointer;
+  typedef T&        reference;
+  typedef const T&  const_reference;
+  typedef size_t    size_type;
   typedef ptrdiff_t differene_type;
 
   // rebind allocator of type U
@@ -60,13 +60,21 @@ class allocator {
     return _allocate(n, static_cast<pointer>(0));
   }
 
-  void deallocate(pointer p, size_type n) { _deallocate(p); }
+  void deallocate(pointer p, size_type n) {
+    _deallocate(p);
+  }
 
-  void construct(pointer p, const_reference value) { _construct(p, value); }
+  void construct(pointer p, const_reference value) {
+    _construct(p, value);
+  }
 
-  void destroy(pointer p) { _destroy(p); }
+  void destroy(pointer p) {
+    _destroy(p);
+  }
 
-  pointer address(reference x) { return static_cast<pointer>(&x); }
+  pointer address(reference x) {
+    return static_cast<pointer>(&x);
+  }
 
   const_pointer const_address(const_reference x) {
     return static_cast<const_pointer>(&x);

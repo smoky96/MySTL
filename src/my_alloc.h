@@ -10,12 +10,12 @@ namespace gd {
 template <typename T, typename Alloc>
 class simple_alloc {
  public:
-  typedef T value_type;
-  typedef T* pointer;
-  typedef const T* const_pointer;
-  typedef T& reference;
-  typedef const T& const_reference;
-  typedef size_t size_type;
+  typedef T         value_type;
+  typedef T*        pointer;
+  typedef const T*  const_pointer;
+  typedef T&        reference;
+  typedef const T&  const_reference;
+  typedef size_t    size_type;
   typedef ptrdiff_t differene_type;
 
   // rebind allocator of type U
@@ -140,7 +140,7 @@ class __default_alloc_template {
   // free-lists 结点的构造
   union obj {
     union obj* next;
-    char data[1];
+    char       data[1];
   };
 
   // 16 个 free lists，free list 数组存的是每个 free list 的头结点的地址
@@ -158,15 +158,15 @@ class __default_alloc_template {
   static char* chunk_alloc(size_t size, int& nobjs);
 
   // chunk allocation state
-  static char* start_free;  // 内存池起始位置，只在 chunk_alloc() 中变化
-  static char* end_free;    // 内存池结束位置，只在 chunk_alloc() 中变化
+  static char*  start_free;  // 内存池起始位置，只在 chunk_alloc() 中变化
+  static char*  end_free;    // 内存池结束位置，只在 chunk_alloc() 中变化
   static size_t heap_size;
 
  public:
   // 分配 n bytes
   static void* allocate(size_t n) {
     obj* volatile* my_free_list;  // 一个指针，指向 free_list 数组 (obj*)
-    obj* result;
+    obj*           result;
 
     // 大于 128 bytes 直接调用一级配置器
     if (n > static_cast<size_t>(__MAX_BYTES)) {
@@ -189,7 +189,7 @@ class __default_alloc_template {
   }
 
   static void deallocate(void* p, size_t n) {
-    obj* q = static_cast<obj*>(p);
+    obj*           q = static_cast<obj*>(p);
     obj* volatile* my_free_list;
 
     if (n > 128) {
@@ -226,11 +226,11 @@ void* __default_alloc_template<inst>::refill(size_t n) {
   int nobjs = 20;  // 默认取得 20 个节点
   // 调用 chunk_alloc() 尝试取得 nobjs 个区块作为 free list 的新节点
   // nobjs 是引用传参
-  char* chunk = chunk_alloc(n, nobjs);
+  char*          chunk = chunk_alloc(n, nobjs);
   obj* volatile* my_free_list;
-  obj* result;
-  obj *current_obj, *next_obj;
-  int i;
+  obj*           result;
+  obj *          current_obj, *next_obj;
+  int            i;
 
   // 若只获得了 1 个区块，这个区块就直接给调用者，free list 无新节点
   if (1 == nobjs)
@@ -255,7 +255,7 @@ void* __default_alloc_template<inst>::refill(size_t n) {
 // 假设 size 已经对齐
 template <int inst>
 char* __default_alloc_template<inst>::chunk_alloc(size_t size, int& nobjs) {
-  char* result;
+  char*  result;
   size_t total_bytes = size * nobjs;
   size_t bytes_left = end_free - start_free;
 
@@ -284,9 +284,9 @@ char* __default_alloc_template<inst>::chunk_alloc(size_t size, int& nobjs) {
     start_free = (char*)malloc(bytes_to_get);
     if (0 == start_free) {
       // heap 空间不足，malloc 失败
-      int i;
+      int            i;
       obj* volatile* my_free_list;
-      obj* p;
+      obj*           p;
       // 看看我们还有什么，搜寻适当的 free list(只往大的搜)，
       // 看看 free list 上还有没有没用且足够大的区块
       for (i = size; i <= __MAX_BYTES; i += __ALIGN) {
@@ -318,7 +318,7 @@ char* __default_alloc_template<inst>::chunk_alloc(size_t size, int& nobjs) {
 
 template <int inst>
 void* __default_alloc_template<inst>::reallocate(void* p, size_t old_sz, size_t new_sz) {
-  void* result;
+  void*  result;
   size_t copy_sz;
 
   if (old_sz > static_cast<size_t>(__MAX_BYTES) && new_sz > static_cast<size_t>(__MAX_BYTES)) {

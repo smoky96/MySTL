@@ -26,7 +26,26 @@
     "ostream": "cpp",
     "numeric": "cpp",
     "streambuf": "cpp",
-    "system_error": "cpp"
+    "system_error": "cpp",
+    "cstdlib": "cpp",
+    "stdexcept": "cpp",
+    "atomic": "cpp",
+    "cctype": "cpp",
+    "clocale": "cpp",
+    "cstdarg": "cpp",
+    "cstddef": "cpp",
+    "cstdint": "cpp",
+    "cstdio": "cpp",
+    "cstring": "cpp",
+    "ctime": "cpp",
+    "cwchar": "cpp",
+    "cwctype": "cpp",
+    "algorithm": "cpp",
+    "optional": "cpp",
+    "type_traits": "cpp",
+    "utility": "cpp",
+    "fstream": "cpp",
+    "limits": "cpp",
+    "typeinfo": "cpp"
   },
-  "cmake.configureOnOpen": true
 }
