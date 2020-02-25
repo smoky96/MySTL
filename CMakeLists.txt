@@ -1,5 +1,9 @@
 cmake_minimum_required (VERSION 3.14)
 
+# SET(CMAKE_BUILD_TYPE "Debug")
+# SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g2 -ggdb")
+# SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
+
 # Set the project name
 project (Test)
 
@@ -7,8 +11,6 @@ project (Test)
 set (
   SOURCES 
   test/test_main.cpp
-  test/test_alloc.h
-  test/test_vector.h
 )
 
 # Add an executable with the above sources
@@ -19,6 +21,15 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 target_include_directories(${PROJECT_NAME}
     PRIVATE
         ${PROJECT_SOURCE_DIR}/src
+        $(PROJECT_SOURCE_DIR)/test
+        ${PROJECT_SOURCE_DIR}/dependencies/googletest/include
+)
+
+# Set the library files to be used during the linking phase
+target_link_libraries(${PROJECT_NAME}
+    ${PROJECT_SOURCE_DIR}/test/test_helper.cpp
+    ${PROJECT_SOURCE_DIR}/dependencies/googletest/lib/libgtest.a
+    ${PROJECT_SOURCE_DIR}/dependencies/googletest/lib/libgtest_main.a
 )
 
 

@@ -1,9 +1,8 @@
 #include "test_alloc.h"
+#include "test_list.h"
 #include "test_vector.h"
 
-int main() {
-  test_alloc::test();
-  test_vector::test();
-
-  return 0;
+int main(int argc, char **argv) {
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
 }
