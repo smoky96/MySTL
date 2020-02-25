@@ -1,0 +1,32 @@
+{
+    "env": {
+        "myDefaultIncludePath": [
+            "${workspaceFolder}/test",
+            "${workspaceFolder}/src"
+        ],
+        "myCompilerPath": "D:/Programs/cygwin64/bin/g++.exe"
+    },
+    "configurations": [
+        {
+            "name": "Win32",
+            "intelliSenseMode": "gcc-x64",
+            "includePath": [
+                "${myDefaultIncludePath}",
+                "${workspaceFolder}/dependencies/googletest/include"
+            ],
+            "defines": [],
+            "forcedInclude": [],
+            "compilerPath": "$(myCompilerPath)",
+            "cStandard": "c11",
+            "cppStandard": "c++11",
+            "browse": {
+                "path": [
+                    "${workspaceFolder}"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            }
+        }
+    ],
+    "version": 4
+}

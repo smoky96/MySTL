@@ -10,7 +10,14 @@
         "-o",
         "${fileDirname}\\${fileBasenameNoExtension}.exe",
         "-I",
-        "${workspaceFolder}\\src"
+        "${workspaceFolder}\\src",
+        "-I",
+        "${workspaceFolder}\\test",
+        "-I",
+        "${workspaceFolder}\\dependencies\\googletest\\include",
+        "${workspaceFolder}\\dependencies\\googletest\\lib\\libgtest.a",
+        "${workspaceFolder}\\dependencies\\googletest\\lib\\libgtest_main.a",
+        "${workspaceFolder}\\test\\test_helper.cpp"
       ],
       "options": {
         "cwd": "D:\\Programs\\cygwin64\\bin"

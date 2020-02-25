@@ -46,6 +46,9 @@
     "utility": "cpp",
     "fstream": "cpp",
     "limits": "cpp",
-    "typeinfo": "cpp"
+    "typeinfo": "cpp",
+    "map": "cpp",
+    "set": "cpp",
+    "iomanip": "cpp"
   },
 }

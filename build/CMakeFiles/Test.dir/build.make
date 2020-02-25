@@ -79,6 +79,9 @@ Test_EXTERNAL_OBJECTS =
 
 Test.exe: CMakeFiles/Test.dir/test/test_main.cpp.o
 Test.exe: CMakeFiles/Test.dir/build.make
+Test.exe: ../test/test_helper.cpp
+Test.exe: ../dependencies/googletest/lib/libgtest.a
+Test.exe: ../dependencies/googletest/lib/libgtest_main.a
 Test.exe: CMakeFiles/Test.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cygdrive/e/Dev/MySTL/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Test.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Test.dir/link.txt --verbose=$(VERBOSE)

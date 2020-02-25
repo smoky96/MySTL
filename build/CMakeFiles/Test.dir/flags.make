@@ -6,5 +6,5 @@ CXX_FLAGS =
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/cygdrive/e/Dev/MySTL/src 
+CXX_INCLUDES = -I/cygdrive/e/Dev/MySTL/src -I/cygdrive/e/Dev/MySTL/$(PROJECT_SOURCE_DIR)/test -I/cygdrive/e/Dev/MySTL/dependencies/googletest/include 
 
