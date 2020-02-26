@@ -306,7 +306,7 @@ class list {
     }
   }
 
-  // 将 [first, last) 插入到 pos 前
+  // 将 [first, last) 插入到 pos 前, first != last
   template <typename InputIterator>
   iterator __copy_insert(const_iterator pos, InputIterator first, InputIterator last) {
     link_type start = _create_node(*first);
@@ -586,11 +586,13 @@ class list {
   // TODO(dong): 下面这个模板初始化函数和上面的函数冲突了！e.g., insert(pos, 6, 8) 会调用下面这个，而非上面的
   template <typename InputIterator>
   iterator insert(const_iterator pos, InputIterator first, InputIterator last) {
-    return __copy_insert(pos, first, last);
+    if (first != last)
+      return __copy_insert(pos, first, last);
   }
 
   iterator insert(const_iterator pos, std::initializer_list<T> il) {
-    return __copy_insert(pos, il.begin(), il.end());
+    if (il.size() != 0)
+      return __copy_insert(pos, il.begin(), il.end());
   }
 
   iterator erase(const_iterator pos) {
@@ -837,7 +839,7 @@ class list {
 
 template <typename T, typename Alloc>
 bool operator==(const list<T, Alloc>& lhs, const list<T, Alloc>& rhs) {
-  if (lhs._size != rhs._size) {
+  if (lhs.size() != rhs.size()) {
     return false;
   }
 

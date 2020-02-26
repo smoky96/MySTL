@@ -437,4 +437,24 @@ TEST_F(ListTest, Reverse) {
   ASSERT_EQ(l4.size(), 5);
 }
 
+TEST_F(ListTest, Operator) {
+  AFTER_CALL(l1, l1.assign({1, 2, 3, 4, 5, 6, 7, 8}), display_int);
+  ASSERT_TRUE(l1 == l3);
+  ASSERT_TRUE(l1 >= l3);
+  ASSERT_TRUE(l1 <= l3);
+
+  AFTER_CALL(l1, l1.assign({1, 2, 3, 4, 5, 6, 8, 8}), display_int);
+  ASSERT_TRUE(l1 != l3);
+  ASSERT_TRUE(l1 > l3);
+  ASSERT_TRUE(l1 >= l3);
+
+  AFTER_CALL(l2, l2.assign({nontrivial(0, 1), nontrivial(2, 3), nontrivial(4, 5), nontrivial(6, 7), nontrivial(8, 9)}),
+             display_obj);
+  ASSERT_TRUE(l2 == l4);
+
+  AFTER_CALL(l2, l2.assign({nontrivial(0, 1), nontrivial(2, 3), nontrivial(5, 5), nontrivial(6, 7), nontrivial(8, 9)}),
+             display_obj);
+  ASSERT_TRUE(!(l2 == l4));
+}
+
 }  // namespace gd

@@ -40,6 +40,14 @@ class nontrivial {
     }
   }
 
+  nontrivial operator=(const nontrivial& rhs) {
+    if (&rhs != this) {
+      i.reset(new int(*rhs.i));
+      j = rhs.j;
+    }
+    return *this;
+  }
+
   ~nontrivial() = default;
 
   void print() const {
