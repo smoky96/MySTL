@@ -1,3 +1,6 @@
+#ifndef __TEST_LIST_H
+#define __TEST_LIST_H
+
 #include <algorithm>
 #include <initializer_list>
 #include <iostream>
@@ -458,3 +461,5 @@ TEST_F(ListTest, Operator) {
 }
 
 }  // namespace gd
+
+#endif  // !__TEST_LIST_H
