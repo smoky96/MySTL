@@ -5,17 +5,16 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "g++.exe build and debug active file",
+      "name": "g++ build and debug active file",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+      "program": "${workspaceFolder}/test/Test.out",
       "args": [],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
       "environment": [],
       "externalConsole": true,
       "MIMode": "gdb",
-      "miDebuggerPath": "D:\\Programs\\cygwin64\\bin\\gdb.exe",
       "setupCommands": [
         {
           "description": "为 gdb 启用整齐打印",
@@ -23,7 +22,7 @@
           "ignoreFailures": true
         }
       ],
-      "preLaunchTask": "g++.exe build active file"
+      "preLaunchTask": "g++ build active file"
     }
   ]
 }

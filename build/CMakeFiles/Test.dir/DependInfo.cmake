@@ -4,14 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/cygdrive/e/Dev/MySTL/test/test_main.cpp" "/cygdrive/e/Dev/MySTL/build/CMakeFiles/Test.dir/test/test_main.cpp.o"
+  "/home/dong/Dev/MySTL/test/test_main.cpp" "/home/dong/Dev/MySTL/build/CMakeFiles/Test.dir/test/test_main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../src"
-  "../$(PROJECT_SOURCE_DIR)/test"
+  "../test"
   "../dependencies/googletest/include"
   )
 

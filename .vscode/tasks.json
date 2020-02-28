@@ -2,26 +2,25 @@
   "tasks": [
     {
       "type": "shell",
-      "label": "g++.exe build active file",
-      "command": "D:\\Programs\\cygwin64\\bin\\g++.exe",
+      "label": "g++ build active file",
+      "command": "g++",
       "args": [
         "-g",
-        "${file}",
+        "${workspaceFolder}/test/test_main.cpp",
         "-o",
-        "${fileDirname}\\${fileBasenameNoExtension}.exe",
+        "${workspaceFolder}/test/Test.out",
         "-I",
-        "${workspaceFolder}\\src",
+        "${workspaceFolder}/src",
         "-I",
-        "${workspaceFolder}\\test",
+        "${workspaceFolder}/test",
         "-I",
-        "${workspaceFolder}\\dependencies\\googletest\\include",
-        "${workspaceFolder}\\dependencies\\googletest\\lib\\libgtest.a",
-        "${workspaceFolder}\\dependencies\\googletest\\lib\\libgtest_main.a",
-        "${workspaceFolder}\\test\\test_helper.cpp"
+        "${workspaceFolder}/dependencies/googletest/include",
+        "${workspaceFolder}/dependencies/googletest/lib/libgtest.a",
+        "${workspaceFolder}/dependencies/googletest/lib/libgtest_main.a",
+        "${workspaceFolder}/test/test_helper.cpp",
+        "-l",
+        "pthread"
       ],
-      "options": {
-        "cwd": "D:\\Programs\\cygwin64\\bin"
-      }
     }
   ],
   "version": "2.0.0"

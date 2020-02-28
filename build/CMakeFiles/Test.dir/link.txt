@@ -1,1 +1,1 @@
-/usr/bin/c++.exe   -Wl,--enable-auto-import CMakeFiles/Test.dir/test/test_main.cpp.o  -o Test.exe -Wl,--out-implib,libTest.dll.a -Wl,--major-image-version,0,--minor-image-version,0 ../test/test_helper.cpp ../dependencies/googletest/lib/libgtest.a ../dependencies/googletest/lib/libgtest_main.a 
+/usr/bin/c++     CMakeFiles/Test.dir/test/test_main.cpp.o  -o Test ../test/test_helper.cpp ../dependencies/googletest/lib/libgtest.a ../dependencies/googletest/lib/libgtest_main.a -lpthread 
