@@ -44,15 +44,13 @@ CMakeFiles/Test.dir/test/test_main.cpp.o
  ../src/my_alloc.h
  ../src/my_construct.h
  ../src/my_defalloc.h
+ ../src/my_deque.h
  ../src/my_iterator.h
- ../src/my_list.h
  ../src/my_uninitialized.h
- ../src/my_vector.h
  ../src/type_traits.h
  /home/dong/Dev/MySTL/test/stack_alloc.h
  /home/dong/Dev/MySTL/test/test_alloc.h
+ /home/dong/Dev/MySTL/test/test_deque.h
  /home/dong/Dev/MySTL/test/test_helper.h
- /home/dong/Dev/MySTL/test/test_list.h
  /home/dong/Dev/MySTL/test/test_main.cpp
- /home/dong/Dev/MySTL/test/test_vector.h
  /home/dong/Dev/MySTL/test/testdef.h

@@ -43,16 +43,14 @@ CMakeFiles/Test.dir/test/test_main.cpp.o: ../src/exceptdef.h
 CMakeFiles/Test.dir/test/test_main.cpp.o: ../src/my_alloc.h
 CMakeFiles/Test.dir/test/test_main.cpp.o: ../src/my_construct.h
 CMakeFiles/Test.dir/test/test_main.cpp.o: ../src/my_defalloc.h
+CMakeFiles/Test.dir/test/test_main.cpp.o: ../src/my_deque.h
 CMakeFiles/Test.dir/test/test_main.cpp.o: ../src/my_iterator.h
-CMakeFiles/Test.dir/test/test_main.cpp.o: ../src/my_list.h
 CMakeFiles/Test.dir/test/test_main.cpp.o: ../src/my_uninitialized.h
-CMakeFiles/Test.dir/test/test_main.cpp.o: ../src/my_vector.h
 CMakeFiles/Test.dir/test/test_main.cpp.o: ../src/type_traits.h
 CMakeFiles/Test.dir/test/test_main.cpp.o: ../test/stack_alloc.h
 CMakeFiles/Test.dir/test/test_main.cpp.o: ../test/test_alloc.h
+CMakeFiles/Test.dir/test/test_main.cpp.o: ../test/test_deque.h
 CMakeFiles/Test.dir/test/test_main.cpp.o: ../test/test_helper.h
-CMakeFiles/Test.dir/test/test_main.cpp.o: ../test/test_list.h
 CMakeFiles/Test.dir/test/test_main.cpp.o: ../test/test_main.cpp
-CMakeFiles/Test.dir/test/test_main.cpp.o: ../test/test_vector.h
 CMakeFiles/Test.dir/test/test_main.cpp.o: ../test/testdef.h
 

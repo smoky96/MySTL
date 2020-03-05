@@ -32,7 +32,8 @@ inline void destroy(T* p) {
 template <typename ForwardIterator>
 inline void __destroy_dispatch(ForwardIterator first, ForwardIterator last, __false_type) {
   for (; first != last; ++first)
-    destroy(first);
+    // Iterator 不是指针，所以需要先用 * 取出 iterator 当中的数据，然后取地址获取数据指针
+    destroy(&*first);
 }
 
 // if it doesn't matter, do nothing

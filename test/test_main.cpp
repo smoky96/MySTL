@@ -1,4 +1,5 @@
 #include "test_alloc.h"
+#include "test_deque.h"
 #include "test_list.h"
 #include "test_vector.h"
 
