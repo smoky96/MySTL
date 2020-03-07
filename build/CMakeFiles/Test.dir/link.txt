@@ -1,1 +1,0 @@
-/usr/bin/c++     CMakeFiles/Test.dir/test/test_main.cpp.o  -o Test ../test/test_helper.cpp ../dependencies/googletest/lib/libgtest.a ../dependencies/googletest/lib/libgtest_main.a -lpthread 
