@@ -20,7 +20,8 @@ inline ForwardIterator __uninitialized_copy_dispatch(InputIterator first, InputI
                                                      __false_type) {
   ForwardIterator cur = dest;
   for (; first != last; ++first, ++cur)
-    construct(cur, *first);
+    // Iterator 不是指针，所以需要先用 * 取出 iterator 当中的数据，然后取地址获取数据指针
+    construct(&*cur, *first);
   return cur;
 }
 
@@ -55,7 +56,8 @@ inline void __uninitialized_fill_dispatch(ForwardIterator first, ForwardIterator
 template <typename ForwardIterator, typename T>
 inline void __uninitialized_fill_dispatch(ForwardIterator first, ForwardIterator last, const T& value, __false_type) {
   for (; first != last; ++first)
-    construct(first, value);
+    // Iterator 不是指针，所以需要先用 * 取出 iterator 当中的数据，然后取地址获取数据指针
+    construct(&*first, value);
 }
 
 template <typename ForwardIterator, typename T>
@@ -78,7 +80,8 @@ template <typename ForwardIterator, typename Size, typename T>
 inline ForwardIterator __uninitialized_fill_n_dispatch(ForwardIterator i, Size n, const T& value, __false_type) {
   ForwardIterator cur = i;
   for (; n > 0; --n, ++cur) {
-    construct(cur, value);
+    // Iterator 不是指针，所以需要先用 * 取出 iterator 当中的数据，然后取地址获取数据指针
+    construct(&*cur, value);
   }
   return cur;
 }
