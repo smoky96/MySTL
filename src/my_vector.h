@@ -389,11 +389,15 @@ class vector {
 
   template <typename InputIterator>
   iterator insert(const_iterator pos, InputIterator first, InputIterator last) {
+    size_type n = pos - _start;
     __copy_insert(const_cast<iterator>(pos), first, last, iterator_category(first));
+    return _start + n;
   }
 
   iterator insert(const_iterator pos, std::initializer_list<value_type> il) {
+    size_type n = pos - _start;
     __copy_insert(const_cast<iterator>(pos), il.begin(), il.end(), forward_iterator_tag());
+    return _start + n;
   }
 
   template <typename... Args>
@@ -447,12 +451,11 @@ class vector {
   }
 
   iterator erase(iterator first, iterator last) {
-    if (first != last) {
-      iterator i = std::copy(last, _finish, first);
-      destroy(i, _finish);
-      _finish = _finish - (last - first);
-      return first;
-    }
+    size_type n = first - _start;
+    iterator  i = std::copy(last, _finish, first);
+    destroy(i, _finish);
+    _finish = _finish - (last - first);
+    return _start + n;
   }
 
   void clear() {

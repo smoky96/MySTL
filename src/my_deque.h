@@ -264,9 +264,8 @@ class deque {
 
   template <typename InputIterator>
   void __copy_assign(InputIterator first, InputIterator last, input_iterator_tag) {
-    size_type n = distance(first, last);
-    iterator  first_t = begin();
-    iterator  last_t = end();
+    iterator first_t = begin();
+    iterator last_t = end();
 
     for (; first != last && first_t != last_t; ++first, ++first_t) {
       *first_t = *first;

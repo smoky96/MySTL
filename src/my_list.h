@@ -588,11 +588,15 @@ class list {
   iterator insert(const_iterator pos, InputIterator first, InputIterator last) {
     if (first != last)
       return __copy_insert(pos, first, last);
+    else
+      return iterator(pos.node);
   }
 
   iterator insert(const_iterator pos, std::initializer_list<T> il) {
     if (il.size() != 0)
       return __copy_insert(pos, il.begin(), il.end());
+    else
+      return iterator(pos.node);
   }
 
   iterator erase(const_iterator pos) {

@@ -6,9 +6,9 @@
       "command": "D:\\Programs\\cygwin64\\bin\\g++.exe",
       "args": [
         "-g",
-        "${file}",
+        "${workspaceFolder}\\test\\test_main.cpp",
         "-o",
-        "${fileDirname}\\${fileBasenameNoExtension}.exe",
+        "${workspaceFolder}\\test\\test_main.exe",
         "-I",
         "${workspaceFolder}\\src",
         "-I",
@@ -17,7 +17,8 @@
         "${workspaceFolder}\\dependencies\\googletest\\include",
         "${workspaceFolder}\\dependencies\\googletest\\lib\\libgtest.a",
         "${workspaceFolder}\\dependencies\\googletest\\lib\\libgtest_main.a",
-        "${workspaceFolder}\\test\\test_helper.cpp"
+        "${workspaceFolder}\\test\\test_helper.cpp",
+        "-Wreturn-type"
       ],
       "options": {
         "cwd": "D:\\Programs\\cygwin64\\bin"
