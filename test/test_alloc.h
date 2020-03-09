@@ -22,12 +22,12 @@ namespace test_alloc {
 int test() {
   unsigned long long num_elem = 10000000;
 
-  std::default_random_engine rd_e;
-  std::normal_distribution<> n_d(10, 1.5);
-  vector<int> vector_stl_alloc;
-  vector<int, gd::simple_alloc<int, gd::alloc>> vector_my_alloc;
-  gd::stack_alloc<int> stl_alloc;
-  gd::stack_alloc<int, gd::simple_alloc<int, gd::alloc>> mempool_alloc;
+  std::default_random_engine                                    rd_e;
+  std::normal_distribution<>                                    n_d(10, 1.5);
+  vector<int>                                                   vector_stl_alloc;
+  vector<int, gd::simple_alloc<int, gd::alloc>>                 vector_my_alloc;
+  gd::stack_alloc<int>                                          stl_alloc;
+  gd::stack_alloc<int, gd::simple_alloc<int, gd::alloc>>        mempool_alloc;
   gd::stack_alloc<int, gd::simple_alloc<int, gd::malloc_alloc>> malloc_alloc;
 
   clock_t start_time;

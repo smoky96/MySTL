@@ -8,21 +8,27 @@ namespace gd {
 
 template <typename T>
 struct stack_node {
-  T data;
+  T           data;
   stack_node* prev;
 };
 
 template <typename T, typename Alloc = std::allocator<T>>
 class stack_alloc {
  public:
-  typedef stack_node<T> node;
+  typedef stack_node<T>                                node;
   typedef typename Alloc::template rebind<node>::other allocator;
 
-  stack_alloc() { __head = 0; }
+  stack_alloc() {
+    __head = 0;
+  }
 
-  ~stack_alloc() { clear(); }
+  ~stack_alloc() {
+    clear();
+  }
 
-  bool empty() { return __head == 0; }
+  bool empty() {
+    return __head == 0;
+  }
 
   void clear() {
     node* cur = __head;
@@ -44,18 +50,20 @@ class stack_alloc {
   }
 
   T pop() {
-    T ret = __head->data;
+    T     ret = __head->data;
     node* tmp = __head->prev;
     destroy(__head);
     __allocator.deallocate(__head);
     __head = tmp;
   }
 
-  T top() { return __head->data; }
+  T top() {
+    return __head->data;
+  }
 
  private:
   allocator __allocator;
-  node* __head;
+  node*     __head;
 };
 
 }  // namespace gd

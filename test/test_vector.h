@@ -110,11 +110,11 @@ class VectorTest : public testing::Test {
 
     std::cout << "- v3: ";
     std::for_each(v3.begin(), v3.end(), display_int);
-    std::cout << endl;
+    std::cout << std::endl;
 
     std::cout << "- v4: ";
     std::for_each(v4.begin(), v4.end(), display_obj);
-    std::cout << endl;
+    std::cout << std::endl;
   }
 };
 

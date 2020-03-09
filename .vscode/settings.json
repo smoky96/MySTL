@@ -51,4 +51,8 @@
     "set": "cpp",
     "iomanip": "cpp"
   },
+  "clang.cxxflags": [
+    "-IE:\\Dev\\MySTL\\dependencies\\googletest\\include",
+    "-IE:\\Dev\\MySTL\\src"
+  ],
 }

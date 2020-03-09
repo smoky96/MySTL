@@ -108,11 +108,11 @@ class ListTest : public testing::Test {
 
     std::cout << "- l3: ";
     std::for_each(l3.begin(), l3.end(), display_int);
-    std::cout << endl;
+    std::cout << std::endl;
 
     std::cout << "- l4: ";
     std::for_each(l4.begin(), l4.end(), display_obj);
-    std::cout << endl;
+    std::cout << std::endl;
   }
 };
 

@@ -111,11 +111,11 @@ class DequeTest : public testing::Test {
 
     std::cout << "- d3: ";
     std::for_each(d3.begin(), d3.end(), display_int);
-    std::cout << endl;
+    std::cout << std::endl;
 
     std::cout << "- d4: ";
     std::for_each(d4.begin(), d4.end(), display_obj);
-    std::cout << endl;
+    std::cout << std::endl;
   }
 };
 

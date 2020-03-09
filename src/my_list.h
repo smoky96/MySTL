@@ -5,7 +5,6 @@
 #include <initializer_list>
 #include "my_alloc.h"
 #include "my_iterator.h"
-#include "test_helper.h"
 
 namespace gd {
 
