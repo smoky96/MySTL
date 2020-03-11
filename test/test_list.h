@@ -75,17 +75,17 @@ TEST(ListInitialTest, Init) {
 
 class ListTest : public testing::Test {
  protected:
-  // list<int, alloc>        l1;
-  // list<nontrivial, alloc> l2;
+  list<int, alloc>        l1;
+  list<nontrivial, alloc> l2;
 
-  // list<int, alloc>        l3;
-  // list<nontrivial, alloc> l4;
+  list<int, alloc>        l3;
+  list<nontrivial, alloc> l4;
 
-  list<int, malloc_alloc>        l1;
-  list<nontrivial, malloc_alloc> l2;
+  // list<int, malloc_alloc>        l1;
+  // list<nontrivial, malloc_alloc> l2;
 
-  list<int, malloc_alloc>        l3;
-  list<nontrivial, malloc_alloc> l4;
+  // list<int, malloc_alloc>        l3;
+  // list<nontrivial, malloc_alloc> l4;
 
   list<int>::iterator        it1;
   list<nontrivial>::iterator it2;

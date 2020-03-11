@@ -171,6 +171,7 @@ class list {
 
   void _put_node(link_type p) {
     node_allocator::deallocate(p);
+    p = 0;
   }
 
   template <typename... Args>
@@ -397,7 +398,8 @@ class list {
   }
 
   list(list&& rhs) noexcept : _node(rhs._node), _size(rhs._size) {
-    rhs._put_node(rhs._node);
+    // 一定要记得将 rhs._node 置为空！不然 rhs 析构的时候会 deallocate 已经被移走的资源
+    rhs._node = 0;
     rhs._size = 0;
   }
 
@@ -429,9 +431,13 @@ class list {
   }
 
   ~list() {
-    clear();
-    _put_node(_node);
-    _size = 0;
+    // 因为有移动构造函数的存在，所以一定要检查 _node 是否为空
+    // 有可能 _node 的资源已经被移动走了，这时不能进行 deallocate
+    if (_node) {
+      clear();
+      _put_node(_node);
+      _size = 0;
+    }
   }
 
   allocator_type get_allocator() const {
