@@ -424,6 +424,7 @@ TEST_F(DequeTest, Operator) {
   ASSERT_TRUE(!(d2 == d4));
 }
 
+#if PERFORMANCE_TEST
 TEST(DeqPerformTest, Performance) {
   std::deque<int> std_deq1;
   gd::deque<int>  my_deq1;
@@ -437,6 +438,7 @@ TEST(DeqPerformTest, Performance) {
   PERFORM_TEST(std_deq2.push_back(8), 20000000);
   PERFORM_TEST(my_deq2.push_back(8), 20000000);
 }
+#endif
 
 }  // namespace gd
 

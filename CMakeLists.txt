@@ -16,6 +16,9 @@ set (
 # Add an executable with the above sources
 add_executable(${PROJECT_NAME} ${SOURCES})
 
+# Add preprocessor variable
+add_compile_definitions(PERFORMANCE_TEST)
+
 # Set the directories that should be included in the build command for this target
 # when running g++ these will be included as -I/directory/path/
 target_include_directories(${PROJECT_NAME}

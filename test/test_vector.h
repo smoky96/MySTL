@@ -347,6 +347,7 @@ TEST_F(VectorTest, Operator) {
   ASSERT_TRUE(!(v2 == v4));
 }
 
+#if PERFORMANCE_TEST
 TEST(VecPerformTest, Performance) {
   std::vector<int> std_vec1;
   gd::vector<int>  my_vec1;
@@ -360,6 +361,7 @@ TEST(VecPerformTest, Performance) {
   PERFORM_TEST(std_vec2.push_back(8), 10000000);
   PERFORM_TEST(my_vec2.push_back(8), 10000000);
 }
+#endif
 
 }  // namespace gd
 
