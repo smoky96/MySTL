@@ -1023,7 +1023,7 @@ bool operator<=(const deque<T, Alloc>& lhs, const deque<T, Alloc>& rhs) {
 }
 
 template <typename T, typename Alloc>
-void swap(deque<T, Alloc> lhs, deque<T, Alloc> rhs) {
+void swap(deque<T, Alloc>& lhs, deque<T, Alloc>& rhs) {
   lhs.swap(rhs);
 }
 

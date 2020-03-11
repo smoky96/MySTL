@@ -18,7 +18,7 @@
         "${workspaceFolder}\\dependencies\\googletest\\lib\\libgtest.a",
         "${workspaceFolder}\\dependencies\\googletest\\lib\\libgtest_main.a",
         "${workspaceFolder}\\test\\test_helper.cpp",
-        "-Wreturn-type"
+        "-Wall"
       ],
       "options": {
         "cwd": "D:\\Programs\\cygwin64\\bin"

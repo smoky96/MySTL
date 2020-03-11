@@ -53,6 +53,7 @@
   },
   "clang.cxxflags": [
     "-IE:\\Dev\\MySTL\\dependencies\\googletest\\include",
-    "-IE:\\Dev\\MySTL\\src"
+    "-IE:\\Dev\\MySTL\\src",
+    "-Wall"
   ],
 }
