@@ -647,6 +647,8 @@ class deque {
 
   deque& operator=(deque&& rhs) {
     clear();
+    __deallocate_data(*(_start.node));
+    __deallocate_map(_map, _map_size);
 
     _start = std::move(rhs._start);
     _finish = std::move(rhs._finish);
@@ -988,6 +990,11 @@ class deque {
       destroy(_start.cur, _finish.cur);
     }
     shrink_to_fit();
+    // 就留一个 buffer 即可，其它的都释放掉
+    for (map_pointer cur = _start.node + 1; cur <= _finish.node; ++cur) {
+      __deallocate_data(*cur);
+      *cur = 0;
+    }
     _finish = _start;
   }
 };
