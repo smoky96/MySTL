@@ -85,6 +85,6 @@ $ ./Test
 
 ## License 授权协议
 
-[GNU General Public License v3.0](LICENSE.md)
+[GNU General Public License v3.0](https://github.com/smoky96/MySTL/blob/master/README.md)
 
 # Have Fun ! d=====(￣▽￣*)b
