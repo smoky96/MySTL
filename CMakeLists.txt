@@ -25,6 +25,12 @@ elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
               MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 endif()
 
+if (CMAKE_SYSTEM_NAME MATCHES "Linux")
+	MESSAGE(STATUS "current platform: Linux, add pthread")
+  set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -pthread")
+  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -pthread")
+endif (CMAKE_SYSTEM_NAME MATCHES "Linux")
+
 # Add preprocessor variable
 add_compile_definitions(PERFORMANCE_TEST)
 
