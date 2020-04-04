@@ -18,7 +18,7 @@ OS X & Linux 下需要重新编译 [google test](https://github.com/google/googl
 ```sh
 $ git clone git@github.com:google/googletest.git
 $ cd googletest
-$ make build
+$ mkdir build
 $ cd build
 
 $ cmake -DCMAKE_BUILD_TYPE=Debug ..
@@ -85,6 +85,6 @@ $ ./Test
 
 ## License 授权协议
 
-[GNU General Public License v3.0](https://github.com/smoky96/MySTL/blob/master/LICENSE.md)
+[GNU General Public License v3.0](https://github.com/smoky96/MySTL/blob/master/LICENSE)
 
 # Have Fun ! d=====(￣▽￣*)b
