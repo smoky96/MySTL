@@ -12,6 +12,7 @@
 #include "test_helper.h"
 
 namespace gd {
+namespace test_list {
 
 using testing::ElementsAre;
 
@@ -460,6 +461,7 @@ TEST_F(ListTest, Operator) {
   ASSERT_TRUE(!(l2 == l4));
 }
 
+}  // namespace test_list
 }  // namespace gd
 
 #endif  // !__TEST_LIST_H

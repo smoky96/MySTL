@@ -17,6 +17,7 @@ using std::cout;
 using std::endl;
 using std::vector;
 
+namespace gd {
 namespace test_alloc {
 
 int test() {
@@ -81,4 +82,6 @@ int test() {
 }
 
 }  // namespace test_alloc
+}  // namespace gd
+
 #endif  // !__TEST_ALLOC_H

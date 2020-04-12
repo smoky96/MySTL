@@ -14,6 +14,7 @@
 #include "test_helper.h"
 
 namespace gd {
+namespace test_vector {
 
 using testing::ElementsAre;
 
@@ -363,6 +364,7 @@ TEST(VecPerformTest, Performance) {
 }
 #endif
 
+}  // namespace test_vector
 }  // namespace gd
 
 #endif  // !__TEST_VECTOR_H

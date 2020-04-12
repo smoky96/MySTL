@@ -14,6 +14,7 @@
 #include "test_helper.h"
 
 namespace gd {
+namespace test_deque {
 
 using testing::ElementsAre;
 using testing::ElementsAreArray;
@@ -440,6 +441,7 @@ TEST(DeqPerformTest, Performance) {
 }
 #endif
 
+}  // namespace test_deque
 }  // namespace gd
 
 #endif  // !__TEST_DEQUE_H

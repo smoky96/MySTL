@@ -15,6 +15,7 @@
 #include "test_helper.h"
 
 namespace gd {
+namespace test_stack {
 
 template <typename T, typename Display>
 void stack_print(stack<T> s, Display f) {
@@ -121,6 +122,7 @@ TEST_F(StackTest, Operator) {
   ASSERT_TRUE(s3 >= s1);
 }
 
+}  // namespace test_stack
 }  // namespace gd
 
 #endif  //!__TEST_STACK__H

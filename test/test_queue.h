@@ -16,6 +16,7 @@
 #include "test_helper.h"
 
 namespace gd {
+namespace test_queue {
 
 template <typename T, typename Display>
 void queue_print(queue<T> q, Display f) {
@@ -245,6 +246,7 @@ TEST_F(PrioQueTest, Operator) {
   ASSERT_TRUE(pq1 != pq3);
 }
 
+}  // namespace test_queue
 }  // namespace gd
 
 #endif  //!__TEST_QUEUE__H__
