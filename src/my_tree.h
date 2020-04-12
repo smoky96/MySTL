@@ -59,6 +59,9 @@ struct _rb_tree_iterator {
   _rb_tree_iterator(link_type x) {
     node = x;
   }
+  _rb_tree_iterator(base_ptr x) {
+    node = x;
+  }
   _rb_tree_iterator(const iterator& rhs) {
     node = rhs.node;
   }
@@ -328,7 +331,7 @@ inline _rb_tree_node_base* _rb_tree_rebalance_for_remove(_rb_tree_node_base* z, 
           2.1.2.2 SR 为黑色，SL 为红色或空：将 S 设为红色，SL 设为黑色，对 S 右旋，转到 2.1.2.3
           2.1.2.3 SR 为红色，SL 任意：将 S 设为 P 的颜色，P 设为黑色，SR 设为黑色，对 P 左旋，调整结束
       2.2. x 是其父节点的右孩子(和 2.1 相同，左右互换即可)
-    
+
 
     参考博客：https://www.jianshu.com/p/e136ec79235c
   */

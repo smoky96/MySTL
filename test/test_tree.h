@@ -10,6 +10,7 @@
 #include "test_helper.h"
 
 namespace gd {
+namespace test_tree {
 
 template <typename _Tp>
 struct identity {
@@ -157,6 +158,7 @@ TEST_F(RbTreeTest, Operator) {
   ASSERT_TRUE(u_tree < tmp1);
 }
 
+}  // namespace test_tree
 }  // namespace gd
 
 #endif  //!__TEST_TREE__H
