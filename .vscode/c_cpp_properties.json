@@ -4,7 +4,7 @@
             "${workspaceFolder}/test",
             "${workspaceFolder}/src"
         ],
-        "myCompilerPath": "D:/Programs/cygwin64/bin/g++.exe"
+        "myCompilerPath": "D:/Programs/cygwin64/bin"
     },
     "configurations": [
         {
@@ -16,7 +16,7 @@
             ],
             "defines": [],
             "forcedInclude": [],
-            "compilerPath": "$(myCompilerPath)",
+            "compilerPath": "${myCompilerPath}",
             "cStandard": "c11",
             "cppStandard": "c++11",
             "browse": {
