@@ -71,13 +71,15 @@ $ ./Test
 
 若不想进行性能测试，将 MySTL 目录下的 CMakeLists.txt 中第 35 行注释掉即可。
 
-## Release History 版本历史
+## History 版本历史
 
 * 截至 2020.04.03 已完成：
-  * allocator（包括一级以及二级配置器）
+  * allocator（一级以及二级配置器）
   * 底层数据解构：heap
   * vector、list、deque、stack、queue、priority_queue
   * 底层数据解构：红黑树
+* 2020.04.20
+  * 完成 map、set
 
 ## Authors 关于作者
 
