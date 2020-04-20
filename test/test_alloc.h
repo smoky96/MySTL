@@ -53,8 +53,8 @@ int test() {
   // vector_my_alloc.clear();
   // end_time = clock();
   // cout << "vector_my_alloc: " << static_cast<double>(end_time - start_time) / CLOCKS_PER_SEC << endl << endl;
-  // start_time = clock();
 
+  start_time = clock();
   for (int i = 0; i < num_elem; ++i) {
     stl_alloc.push(n_d(rd_e));
   }
