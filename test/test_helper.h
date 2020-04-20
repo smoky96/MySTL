@@ -55,6 +55,20 @@ inline void display_double(const double& i) {
   std::cout << i << " ";
 }
 
+template <typename Key, typename T>
+struct display_map {
+  void operator()(const std::pair<Key, T> p) {
+    std::cout << "[k:" << p.first << " v:" << p.second << "], ";
+  }
+};
+
+template <typename T>
+struct display {
+  void operator()(const T& i) {
+    std::cout << i << " ";
+  }
+};
+
 }  // namespace gd
 
 #endif  // !TEST_HELPER_H

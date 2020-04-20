@@ -1,6 +1,7 @@
 #ifndef __MY_SET__H
 #define __MY_SET__H
 
+#include <functional>
 #include <initializer_list>
 #include "my_tree.h"
 

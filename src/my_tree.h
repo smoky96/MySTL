@@ -1,7 +1,6 @@
 #ifndef __MY_TREE__H
 #define __MY_TREE__H
 
-#include <algorithm>
 #include "my_alloc.h"
 #include "my_iterator.h"
 
@@ -611,7 +610,8 @@ class rb_tree {
 
   template <typename ForwardIterator>
   void __insert_unique_dispatch(ForwardIterator first, ForwardIterator last, forward_iterator_tag) {
-    size_type n = distance(first, last);
+    // TODO(dong) 可能是由于在 my_map 中使用了 std::pair，这里的 distance 调用会与 std 中的 distance 出现歧义
+    size_type n = gd::distance(first, last);
     for (; n > 0; --n, ++first)
       insert_unique(*first);
   }
@@ -624,7 +624,8 @@ class rb_tree {
 
   template <typename ForwardIterator>
   void __insert_equal_dispatch(ForwardIterator first, ForwardIterator last, forward_iterator_tag) {
-    size_type n = distance(first, last);
+    // TODO(dong) 可能是由于在 my_map 中使用了 std::pair，这里的 distance 调用会与 std 中的 distance 出现歧义
+    size_type n = gd::distance(first, last);
     for (; n > 0; --n, ++first)
       insert_equal(*first);
   }
@@ -738,11 +739,11 @@ class rb_tree {
   }
 
   iterator end() noexcept {
-    return _rightmost();
+    return _header;
   }
 
   const_iterator end() const noexcept {
-    return _rightmost();
+    return _header;
   }
 
  public:  // capacity
@@ -792,6 +793,40 @@ class rb_tree {
   }
 
   template <typename... Args>
+  iterator emplace_unique(iterator pos, Args... args) {
+    link_type p = _create_node(std::forward<Args>(args)...);
+
+    if (pos.node == _header->left) {                              // begin()
+      if (size() > 0 && _key_compare(_key(p), _key(pos.node))) {  // 若比最小的还小
+        return __insert((link_type)pos.node, (link_type)pos.node, p);
+      } else {
+        destroy_node(p);  // TODO(dong) 这里效率有待提高
+        return emplace_unique(std::forward<Args>(args)...).first;
+      }
+    } else if (pos.node == _header) {                   // end()
+      if (_key_compare(_key(_rightmost()), _key(p))) {  // 若比最大的还大
+        return __insert((link_type)0, _rightmost(), p);  // 这里参数 x 设为空，直接在 __insert() 中提前进入第一种情况
+      } else {
+        destroy_node(p);  // TODO(dong) 这里效率有待提高
+        return emplace_unique(std::forward<Args>(args)...).first;
+      }
+    } else {
+      iterator before = pos;
+      --before;
+      if (_key_compare(_key(before.node), _key(p)) && _key_compare(_key(p), _key(pos.node))) {
+        // 若 *(--pos) < p->value < *(pos)
+        if (_right(before.node) == nullptr)  // 插到右边
+          return __insert((link_type)0, (link_type)before.node, p);
+        else
+          return __insert((link_type)pos.node, (link_type)pos.node, p);
+      } else {
+        destroy_node(p);  // TODO(dong) 这里效率有待提高
+        return emplace_unique(std::forward<Args>(args)...).first;
+      }
+    }
+  }
+
+  template <typename... Args>
   iterator emplace_equal(Args&&... args) {
     link_type y = _header;
     link_type x = _root();
@@ -802,6 +837,40 @@ class rb_tree {
       x = _key_compare(_key(z), _key(x)) ? _left(x) : _right(x);
     }
     return __insert(x, y, z);
+  }
+
+  template <typename... Args>
+  iterator emplace_equal(iterator pos, Args... args) {
+    link_type p = _create_node(std::forward<Args>(args)...);
+
+    if (pos.node == _header->left) {                              // begin()
+      if (size() > 0 && _key_compare(_key(p), _key(pos.node))) {  // 若比最小的还小
+        return __insert((link_type)pos.node, (link_type)pos.node, p);
+      } else {
+        destroy_node(p);  // TODO(dong) 这里效率有待提高
+        return emplace_equal(std::forward<Args>(args)...);
+      }
+    } else if (pos.node == _header) {                   // end()
+      if (_key_compare(_key(_rightmost()), _key(p))) {  // 若比最大的还大
+        return __insert((link_type)0, _rightmost(), p);  // 这里参数 x 设为空，直接在 __insert() 中提前进入第一种情况
+      } else {
+        destroy_node(p);  // TODO(dong) 这里效率有待提高
+        return emplace_equal(std::forward<Args>(args)...);
+      }
+    } else {
+      iterator before = pos;
+      --before;
+      if (_key_compare(_key(before.node), _key(p)) && _key_compare(_key(p), _key(pos.node))) {
+        // 若 *(--pos) < p->value < *(pos)
+        if (_right(before.node) == nullptr)  // 插到右边
+          return __insert((link_type)0, (link_type)before.node, p);
+        else
+          return __insert((link_type)pos.node, (link_type)pos.node, p);
+      } else {
+        destroy_node(p);  // TODO(dong) 这里效率有待提高
+        return emplace_equal(std::forward<Args>(args)...);
+      }
+    }
   }
 
   std::pair<iterator, bool> insert_unique(const value_type& value) {
@@ -841,6 +910,14 @@ class rb_tree {
     __insert_unique_dispatch(first, last, iterator_category(first));
   }
 
+  iterator insert_unique(iterator pos, const value_type& value) {
+    return emplace_unique(pos, value);
+  }
+
+  iterator insert_unique(iterator pos, const value_type&& value) {
+    return emplace_unique(pos, std::move(value));
+  }
+
   iterator insert_equal(const value_type& value) {
     link_type y = _header;
     link_type x = _root();
@@ -861,6 +938,14 @@ class rb_tree {
     __insert_equal_dispatch(first, last, iterator_category(first));
   }
 
+  iterator insert_equal(iterator pos, const value_type& value) {
+    return emplace_equal(pos, value);
+  }
+
+  iterator insert_equal(iterator pos, const value_type&& value) {
+    return emplace_equal(pos, std::move(value));
+  }
+
   void erase(iterator pos) {
     link_type y =
         static_cast<link_type>(_rb_tree_rebalance_for_remove(pos.node, _header->parent, _header->left, _header->right));
@@ -870,7 +955,8 @@ class rb_tree {
 
   size_type erase(const key_type& x) {
     std::pair<iterator, iterator> p = equal_range(x);
-    size_type                     n = distance(p.first, p.second);
+    // TODO(dong) 可能是由于在 my_map 中使用了 std::pair，这里的 distance 调用会与 std 中的 distance 出现歧义
+    size_type n = gd::distance(p.first, p.second);
     erase(p.first, p.second);
     return n;
   }
@@ -942,8 +1028,9 @@ class rb_tree {
   }
 
   size_type count(const key_type& k) const {
-    auto      p = equal_range(k);
-    size_type n = distance(p.first, p.second);
+    auto p = equal_range(k);
+    // TODO(dong) 可能是由于在 my_map 中使用了 std::pair，这里的 distance 调用会与 std 中的 distance 出现歧义
+    size_type n = gd::distance(p.first, p.second);
     return n;
   }
 
