@@ -55,7 +55,7 @@ int test() {
   // cout << "vector_my_alloc: " << static_cast<double>(end_time - start_time) / CLOCKS_PER_SEC << endl << endl;
 
   start_time = clock();
-  for (int i = 0; i < num_elem; ++i) {
+  for (unsigned long long i = 0; i < num_elem; ++i) {
     stl_alloc.push(n_d(rd_e));
   }
   stl_alloc.clear();
@@ -63,7 +63,7 @@ int test() {
   cout << "stl_alloc: " << static_cast<double>(end_time - start_time) / CLOCKS_PER_SEC << endl;
 
   start_time = clock();
-  for (int i = 0; i < num_elem; ++i) {
+  for (unsigned long long i = 0; i < num_elem; ++i) {
     mempool_alloc.push(n_d(rd_e));
   }
   mempool_alloc.clear();
@@ -71,7 +71,7 @@ int test() {
   cout << "mempool_alloc: " << static_cast<double>(end_time - start_time) / CLOCKS_PER_SEC << endl;
 
   start_time = clock();
-  for (int i = 0; i < num_elem; ++i) {
+  for (unsigned long long i = 0; i < num_elem; ++i) {
     malloc_alloc.push(n_d(rd_e));
   }
   malloc_alloc.clear();
