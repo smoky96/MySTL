@@ -507,7 +507,7 @@ class deque {
   }
 
   void __reserve_map_at_front(size_type need) {
-    if (need > _start.node - _map) {
+    if (need > static_cast<size_type>(_start.node - _map)) {
       __reallocate_map(need, true);
     }
   }
