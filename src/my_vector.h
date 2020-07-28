@@ -109,7 +109,7 @@ class vector {
   void __copy_insert(iterator pos, ForwardIterator first, ForwardIterator last, forward_iterator_tag) {
     if (first != last) {
       size_type n = distance(first, last);
-      if ((_end_of_storage - _finish) >= n) {
+      if (static_cast<size_type>(_end_of_storage - _finish) >= n) {
         const size_type elem_after = _finish - pos;
         iterator        old_finish = _finish;
         if (elem_after > n) {
