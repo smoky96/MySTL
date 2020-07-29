@@ -2,6 +2,7 @@
 #define __MY_ITERATOR_H
 
 #include <cstddef>
+#include "type_traits.h"
 
 namespace gd {
 
@@ -128,6 +129,27 @@ template <typename InputIterator, typename Distance>
 inline void advance(InputIterator& i, Distance n) {
   advance_dispatch(i, n, iterator_category(i));
 }
+
+template <typename>
+struct __is_iterator_aux : public __false_type {};
+
+template <>
+struct __is_iterator_aux<input_iterator_tag> : public __true_type {};
+
+template <>
+struct __is_iterator_aux<output_iterator_tag> : public __true_type {};
+
+template <>
+struct __is_iterator_aux<forward_iterator_tag> : public __true_type {};
+
+template <>
+struct __is_iterator_aux<bidirectional_iterator_tag> : public __true_type {};
+
+template <>
+struct __is_iterator_aux<random_access_iterator_tag> : public __true_type {};
+
+template <typename T>
+struct is_iterator : public __is_iterator_aux<T> {};
 
 }  // namespace gd
 

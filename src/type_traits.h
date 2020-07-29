@@ -3,9 +3,14 @@
 
 namespace gd {
 
-struct __true_type {};
+template <typename T, T v>
+struct integral_constant {
+  typedef integral_constant<T, v> type;
+};
 
-struct __false_type {};
+typedef integral_constant<bool, true> __true_type;
+
+typedef integral_constant<bool, false> __false_type;
 
 template <typename T>
 struct __type_traits {
