@@ -7,6 +7,7 @@
 #include <iostream>
 #include <iterator>
 #include <vector>
+#include "my_list.h"
 #include "gmock/gmock.h"
 #include "gtest/gtest.h"
 #include "my_alloc.h"
@@ -28,7 +29,7 @@ TEST(VecInitialTest, Init) {
   ASSERT_EQ(v2.size(), 6);
   ASSERT_THAT(v2, ElementsAre(0, 0, 0, 0, 0, 0));
 
-  vector<int> v3(size_t(6), 8);
+  vector<int> v3(6, 8);
   ASSERT_EQ(v3.size(), 6);
   ASSERT_THAT(v3, ElementsAre(8, 8, 8, 8, 8, 8));
 
@@ -67,7 +68,7 @@ TEST(VecInitialTest, Init) {
   ASSERT_EQ(v10.size(), 6);
   ASSERT_THAT(v10, ElementsAre(1, 2, 3, 4, 5, 6));
 
-  v10.assign(size_t(8), 8);
+  v10.assign(8, 8);
   ASSERT_EQ(v10.size(), 8);
   ASSERT_THAT(v10, ElementsAre(8, 8, 8, 8, 8, 8, 8, 8));
 

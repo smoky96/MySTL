@@ -155,7 +155,7 @@ class vector {
     _finish = __alloc_and_fill(n, value);
   }
 
-  template <typename InputIterator>
+  template <typename InputIterator, typename std::enable_if<std::is_pointer<InputIterator>::value, int>::type = 0>
   vector(InputIterator first, InputIterator last) {
     _finish = __range_alloc_and_fill(first, last);
   }
@@ -206,7 +206,7 @@ class vector {
     return *this;
   }
 
-  template <typename InputIterator>
+  template <typename InputIterator, typename std::enable_if<std::is_pointer<InputIterator>::value, int>::type = 0>
   void assign(InputIterator first, InputIterator last) {
     __copy_assign(first, last, iterator_category(first));
   }
